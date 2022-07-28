@@ -2,7 +2,8 @@ package restaurantstorage
 
 import (
 	"context"
-	"fmt"
+
+	"github.com/daopmdean/food-delivery-go/common"
 
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restaurantmodel"
 )
@@ -14,7 +15,8 @@ func (s *sqlStore) Create(
 	db := s.db
 
 	if err := db.Table(data.TableName()).Create(data).Error; err != nil {
-		return fmt.Errorf("error create restaurant: %s", err)
+		common.ErrDb(err)
+		return common.ErrDb(err)
 	}
 
 	return nil

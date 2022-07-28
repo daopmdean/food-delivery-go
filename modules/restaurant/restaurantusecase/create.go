@@ -3,6 +3,7 @@ package restaurantusecase
 import (
 	"context"
 
+	"github.com/daopmdean/food-delivery-go/common"
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restaurantmodel"
 )
 
@@ -31,7 +32,7 @@ func (usecase *createRestaurantUsecase) CreateRestaurant(
 
 	err = usecase.store.Create(ctx, data)
 	if err != nil {
-		return err
+		return common.ErrCannotCreateEntity(restaurantmodel.EntityName, err)
 	}
 
 	return nil
