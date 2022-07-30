@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS images;
 CREATE SEQUENCE images_seq;
 CREATE TABLE images (
   id int NOT NULL DEFAULT NEXTVAL ('images_seq'),
-  file_name varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  file_name varchar(100) NOT NULL,
   width int NOT NULL,
   height int NOT NULL,
   status int NOT NULL DEFAULT '1',
@@ -118,17 +118,18 @@ CREATE INDEX order_id ON order_details (order_id);
 
 
 DROP TABLE IF EXISTS order_trackings;
+CREATE TYPE state_enum AS ENUM ('waiting_for_shipper', 'preparing', 'on_the_way','delivered','cancel');
 CREATE SEQUENCE order_trackings_seq;
 CREATE TABLE order_trackings (
   id int NOT NULL DEFAULT NEXTVAL ('order_trackings_seq'),
   order_id int NOT NULL,
-  state enum('waiting_for_shipper','preparing','on_the_way','delivered','cancel') NOT NULL,
+  state state_enum NOT NULL,
   status int NOT NULL DEFAULT '1',
   created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
-  KEY `order_id` (order_id) USING BTREE
-) ENGINE=InnoDB;
+  updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ;
+CREATE INDEX order_id ON order_trackings(order_id);
 
 
 DROP TABLE IF EXISTS orders;
