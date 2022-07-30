@@ -79,3 +79,11 @@ func ErrCannotCreateEntity(entity string, err error) *AppError {
 		fmt.Sprintf("ErrCannotCreate%s", entity),
 	)
 }
+
+func ErrCannotListEntity(entity string, err error) *AppError {
+	return NewCustomError(
+		err,
+		fmt.Sprintf("Cannot List %s", strings.ToLower(entity)),
+		fmt.Sprintf("ErrCannotList%s", entity),
+	)
+}

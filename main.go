@@ -29,6 +29,7 @@ func main() {
 
 	restaurants := r.Group("/restaurants")
 	{
+		restaurants.GET("", ginrestaurant.ListRestaurant(*appContext))
 		restaurants.POST("", ginrestaurant.CreateRestaurant(*appContext))
 	}
 
