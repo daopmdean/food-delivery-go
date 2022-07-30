@@ -6,8 +6,8 @@ import (
 )
 
 type RestaurantCreate struct {
-	Name    string `json:"name"`
-	Address string `json:"address"`
+	Name    string `json:"name" gorm:"column:name;"`
+	Address string `json:"address" gorm:"column:addr;"`
 }
 
 func (RestaurantCreate) TableName() string {
