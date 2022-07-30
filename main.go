@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/daopmdean/food-delivery-go/middleware"
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restauranttransport/ginrestaurant"
 	"github.com/daopmdean/food-delivery-go/tool"
 	"github.com/gin-gonic/gin"
@@ -21,6 +22,8 @@ func main() {
 	appContext := tool.NewAppContext(db)
 
 	r := gin.Default()
+	r.Use(middleware.Recover(*appContext))
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"msg": "ok",

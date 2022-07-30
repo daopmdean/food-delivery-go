@@ -15,6 +15,7 @@ func (store *sqlStore) List(
 	moreKeys ...string,
 ) ([]restaurantmodel.Restaurant, error) {
 	var result []restaurantmodel.Restaurant
+
 	db := store.db
 	db = db.Table(restaurantmodel.Restaurant{}.TableName()).
 		Where("status NOT IN (0)")

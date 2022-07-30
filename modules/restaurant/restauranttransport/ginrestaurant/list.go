@@ -18,11 +18,11 @@ func ListRestaurant(appCtx tool.AppContext) func(c *gin.Context) {
 		var filter restaurantmodel.Filter
 
 		if err := ctx.ShouldBind(&paging); err != nil {
-			ctx.JSON(http.StatusBadRequest, common.ErrInvalidRequest(err))
+			panic(common.ErrInvalidRequest(err))
 		}
 
 		if err := ctx.ShouldBind(&filter); err != nil {
-			ctx.JSON(http.StatusBadRequest, common.ErrInvalidRequest(err))
+			panic(common.ErrInvalidRequest(err))
 		}
 
 		paging.Fill()
@@ -32,8 +32,7 @@ func ListRestaurant(appCtx tool.AppContext) func(c *gin.Context) {
 
 		result, err := usecase.ListRestaurant(ctx.Request.Context(), &filter, &paging)
 		if err != nil {
-			ctx.JSON(http.StatusBadRequest, common.ErrInvalidRequest(err))
-			return
+			panic(common.ErrInvalidRequest(err))
 		}
 
 		ctx.JSON(http.StatusOK, common.NewSuccessResponse(result, paging, filter))
