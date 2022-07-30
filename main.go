@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/daopmdean/food-delivery-go/middleware"
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restauranttransport/ginrestaurant"
@@ -13,7 +14,7 @@ import (
 )
 
 func main() {
-	dsn := "host=localhost user=postgres password=mystrongpassword dbname=food-delivery port=5432 sslmode=disable"
+	dsn := os.Getenv("DB_CONNECTION")
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalln("error init db", err)
