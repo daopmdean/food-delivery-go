@@ -35,6 +35,7 @@ func main() {
 	{
 		restaurants.GET("", ginrestaurant.ListRestaurant(*appContext))
 		restaurants.POST("", ginrestaurant.CreateRestaurant(*appContext))
+		restaurants.PUT("/:id", ginrestaurant.UpdateRestaurant(*appContext))
 	}
 
 	r.Run()

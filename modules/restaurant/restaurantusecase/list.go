@@ -33,7 +33,7 @@ func (usecase *listRestaurantUsecase) ListRestaurant(
 ) ([]restaurantmodel.Restaurant, error) {
 	result, err := usecase.store.List(ctx, filter, paging)
 	if err != nil {
-		return nil, common.ErrCannotListEntity(restaurantmodel.EntityName, err)
+		return nil, common.ErrCannotListEntity(restaurantmodel.RestaurantEntityName, err)
 	}
 
 	return result, nil

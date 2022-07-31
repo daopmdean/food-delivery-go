@@ -32,7 +32,7 @@ func (usecase *createRestaurantUsecase) CreateRestaurant(
 
 	err = usecase.store.Create(ctx, data)
 	if err != nil {
-		return common.ErrCannotCreateEntity(restaurantmodel.EntityName, err)
+		return common.ErrCannotCreateEntity(restaurantmodel.RestaurantEntityName, err)
 	}
 
 	return nil

@@ -2,7 +2,7 @@ package restaurantmodel
 
 import "github.com/daopmdean/food-delivery-go/common"
 
-const EntityName = "Restaurant"
+const RestaurantEntityName = "Restaurant"
 
 type Restaurant struct {
 	common.SQLModel  `json:",inline"`
