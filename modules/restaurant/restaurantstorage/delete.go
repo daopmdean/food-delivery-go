@@ -7,7 +7,7 @@ import (
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restaurantmodel"
 )
 
-func (store *sqlStore) Delete(ctx context.Context, id int) error {
+func (store *sqlStore) SoftDelete(ctx context.Context, id int) error {
 	db := store.db
 
 	if err := db.Table(restaurantmodel.Restaurant{}.TableName()).

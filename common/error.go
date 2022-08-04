@@ -88,10 +88,34 @@ func ErrCannotUpdateEntity(entity string, err error) *AppError {
 	)
 }
 
+func ErrCannotFindEntity(entity string, err error) *AppError {
+	return NewCustomError(
+		err,
+		fmt.Sprintf("Cannot Find %s", strings.ToLower(entity)),
+		fmt.Sprintf("ErrCannotFind%s", entity),
+	)
+}
+
+func ErrEntityDeleted(entity string) *AppError {
+	return NewCustomError(
+		nil,
+		fmt.Sprintf("%s Deleted", strings.ToLower(entity)),
+		fmt.Sprintf("ErrEntityDeleted%s", entity),
+	)
+}
+
 func ErrCannotListEntity(entity string, err error) *AppError {
 	return NewCustomError(
 		err,
 		fmt.Sprintf("Cannot List %s", strings.ToLower(entity)),
 		fmt.Sprintf("ErrCannotList%s", entity),
+	)
+}
+
+func ErrCannotDeleteEntity(entity string, err error) *AppError {
+	return NewCustomError(
+		err,
+		fmt.Sprintf("Cannot Delete %s", strings.ToLower(entity)),
+		fmt.Sprintf("ErrCannotDeleteEntity%s", entity),
 	)
 }
