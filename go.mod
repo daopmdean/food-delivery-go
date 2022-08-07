@@ -3,6 +3,7 @@ module github.com/daopmdean/food-delivery-go
 go 1.18
 
 require (
+	github.com/aws/aws-sdk-go v1.37.2
 	github.com/gin-gonic/gin v1.8.1
 	gorm.io/driver/postgres v1.3.8
 	gorm.io/gorm v1.23.8
@@ -24,6 +25,7 @@ require (
 	github.com/jackc/pgx/v4 v4.16.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
