@@ -7,6 +7,7 @@ import (
 
 	"github.com/daopmdean/food-delivery-go/middleware"
 	"github.com/daopmdean/food-delivery-go/modules/restaurant/restauranttransport/ginrestaurant"
+	"github.com/daopmdean/food-delivery-go/modules/upload/transport/ginupload"
 	"github.com/daopmdean/food-delivery-go/tool"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
@@ -30,6 +31,8 @@ func main() {
 			"msg": "ok",
 		})
 	})
+
+	r.POST("/upload", ginupload.Upload(*appContext))
 
 	restaurants := r.Group("/restaurants")
 	{
